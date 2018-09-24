@@ -3,6 +3,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using IronPython;
+using IronPython.Hosting;
 
 namespace PresentationLayer
 {
@@ -14,6 +16,7 @@ namespace PresentationLayer
         [DllImport("winmm.dll")]
         private static extern long mciSendString(string command, StringBuilder retString, int returnLength,
             IntPtr callBack);
+        private int fileName = 0;
 
         public MainWindow()
         {
@@ -49,8 +52,9 @@ namespace PresentationLayer
 
         private void ButtonStop_OnClick(object sender, RoutedEventArgs e)
         {
-            mciSendString("save recsound d:\\Games\\mic.wav", null, 0, IntPtr.Zero);
+            mciSendString("save recsound d:\\mic" + fileName + ".wav", null, 0, IntPtr.Zero);
             mciSendString("close recSound", null, 0, IntPtr.Zero);
+            fileName++;
             ButtonStop.Visibility = Visibility.Hidden;
         }
     }
