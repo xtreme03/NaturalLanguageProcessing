@@ -1,3 +1,10 @@
+'''
+ProjectName: Text Summarizer 
+ProjectDescription: Text Summarizing using NLP
+Author :xtreme03
+Version:1.0.3
+
+'''
 import logging
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
